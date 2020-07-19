@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Login from './Login'
 import MyPage from './MyPage'
 import AuthController from './AuthController'
+import Company from './Company'
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
         <Switch>
           <Route path="/login" component={Login} />
           <AuthController>
+            <Route path="/companies" component={Company} />
             <Route path="/" component={MyPage} />
           </AuthController>
         </Switch>

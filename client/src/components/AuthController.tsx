@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Switch } from 'react-router-dom'
 import axios from 'axios'
 
 type TAuthController = {
-  children?: React.ReactElement
+  children?: React.ReactElement[]
 }
 
 const AuthController: React.FC<TAuthController> = (props) => {
@@ -21,7 +21,7 @@ const AuthController: React.FC<TAuthController> = (props) => {
     fetchCurrentUser()
   }, [history])
 
-  return <>{children}</>
+  return <Switch>{children}</Switch>
 }
 
 export default AuthController
