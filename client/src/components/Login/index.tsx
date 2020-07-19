@@ -1,9 +1,16 @@
-import React from 'react'
-import axios from 'axios'
+import React, { useContext } from 'react'
+import axios, { AxiosResponse } from 'axios'
 import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../AuthProvider'
+
+type TAPIV1SessionsCreate = {
+  message: string
+  userId: number | null
+}
 
 const Login: React.FC = () => {
   const history = useHistory()
+  const { setAuthInfo } = useContext(AuthContext)
   const handleLogin = async () => {
     await axios
       .post(
@@ -14,7 +21,8 @@ const Login: React.FC = () => {
         },
         { withCredentials: true }
       )
-      .then(() => {
+      .then((response: AxiosResponse<TAPIV1SessionsCreate>) => {
+        setAuthInfo({ userId: response.data.userId })
         history.push('/')
       })
       .catch(() => {
