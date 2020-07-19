@@ -1,15 +1,7 @@
 import React from 'react'
-import Logout from '../Logout'
 
 const MyPage: React.FC = () => {
-  return (
-    <div>
-      MyPage
-      <div>
-        <Logout />
-      </div>
-    </div>
-  )
+  return <div>MyPage</div>
 }
 
 export default MyPage

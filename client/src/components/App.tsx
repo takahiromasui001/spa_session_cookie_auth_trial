@@ -5,12 +5,14 @@ import MyPage from './MyPage'
 import AuthController from './AuthController'
 import Company from './Company'
 import AuthProvider from './AuthProvider'
+import Header from './Header'
 
 const App: React.FC = () => {
   return (
     <div className="App">
       <AuthProvider>
         <Router>
+          <Header />
           <Switch>
             <Route path="/login" component={Login} />
             <AuthController>
