@@ -14,7 +14,7 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     await axios
       .post(
-        'http://127.0.0.1:3000/api/v1/login',
+        'http://localhost:3000/api/v1/login',
         {
           name: 'user1',
           password: '1111',
@@ -25,8 +25,9 @@ const Login: React.FC = () => {
         setAuthInfo({ userId: response.data.userId })
         history.push('/')
       })
-      .catch(() => {
+      .catch((response) => {
         console.log('login failed')
+        console.log(response)
       })
   }
 

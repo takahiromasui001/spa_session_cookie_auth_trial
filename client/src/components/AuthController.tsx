@@ -20,7 +20,7 @@ const AuthController: React.FC<TAuthController> = (props) => {
   useEffect(() => {
     const fetchCurrentUser = async () => {
       await axios
-        .get('http://127.0.0.1:3000/api/v1/logged_in', {
+        .get('http://localhost:3000/api/v1/logged_in', {
           withCredentials: true,
         })
         .then((response: AxiosResponse<TAPIV1SessionsShow>) =>

@@ -9,7 +9,7 @@ const Logout: React.FC = () => {
 
   const handleLogout = async () => {
     await axios
-      .delete('http://127.0.0.1:3000/api/v1/logout', { withCredentials: true })
+      .delete('http://localhost:3000/api/v1/logout', { withCredentials: true })
       .then(() => {
         setAuthInfo({ userId: null })
         history.push('/login')
