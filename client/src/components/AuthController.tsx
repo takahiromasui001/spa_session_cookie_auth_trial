@@ -23,9 +23,11 @@ const AuthController: React.FC<TAuthController> = (props) => {
         .get('http://localhost:3000/api/v1/logged_in', {
           withCredentials: true,
         })
-        .then((response: AxiosResponse<TAPIV1SessionsShow>) =>
+        .then((response: AxiosResponse<TAPIV1SessionsShow>) => {
           setAuthInfo({ userId: response.data.userId })
-        )
+          axios.defaults.headers.common['x-csrf-token'] =
+            response.headers['x-csrf-token']
+        })
         .catch(() => history.push('/login'))
     }
     fetchCurrentUser()

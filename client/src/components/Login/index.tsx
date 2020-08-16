@@ -23,6 +23,8 @@ const Login: React.FC = () => {
       )
       .then((response: AxiosResponse<TAPIV1SessionsCreate>) => {
         setAuthInfo({ userId: response.data.userId })
+        axios.defaults.headers.common['x-csrf-token'] =
+          response.headers['x-csrf-token']
         history.push('/')
       })
       .catch((response) => {
