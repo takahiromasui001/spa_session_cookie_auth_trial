@@ -2,6 +2,8 @@ module Api
   module V1
     class SessionsController < ApplicationController
       skip_before_action :login_check, only: [:create]
+      skip_before_action :verify_authenticity_token, only: :create
+      after_action :set_csrf_token_header, only: [:create, :show]
 
       def show
         render json: { message: "logged in", userId: current_user.id }
@@ -20,6 +22,7 @@ module Api
 
       def delete
         session.delete(:user_id)
+        render json: { message: "logout succeed" }
       end
     end
   end
